@@ -55,7 +55,7 @@ ansible -m setup all
                 "uuid": "497ad222-04fa-453f-b110-ba8001d38788"
             },
 ```
-- We need to write ansible_mounts.block_available or ansible_mounts[block_available]. We are trying to get the value of the key.
+- We need to write **`ansible_mounts.block_available`** or **`ansible_mounts[block_available]`**. We are trying to get the value of the key.
 
 ### Dynamic Inventory for Cloud
 - Install boto3 for this. `pip3 install boto3`
