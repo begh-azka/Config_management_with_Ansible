@@ -1,0 +1,26 @@
+all:
+  children:
+    ubuntu_group:
+    rhel_group:
+
+ubuntu_group:
+  hosts:
+    node-1:
+      ansible_host: 54.84.63.61
+    node-2:
+      ansible_host: 23.22.159.28
+  vars:
+    ansible_ssh_private_key_file: agent.pem
+    ansible_user: ubuntu
+
+rhel_group:
+  hosts:
+    node-3:
+      #ansible_host: 54.173.252.161
+      ansible_host: 3.85.126.232
+    node-4:
+      #ansible_host: 54.167.16.48
+      ansible_host: 54.160.88.68
+  vars:
+    ansible_ssh_private_key_file: node.pem
+    ansible_user: ec2-user

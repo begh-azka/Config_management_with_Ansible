@@ -1,0 +1,18 @@
+- name: Understanding Loops
+  hosts: all
+  tasks: 
+      - name: Loop through a list
+        debug: var=item
+        with_items:
+         - group1
+         - group2
+         - group3
+        
+      - name: Loop through a dictionary
+        debug: var=item.name
+        with_items:
+         - name: Jane
+           country: US
+         - name: JJ
+           country: China
+

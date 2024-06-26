@@ -1,0 +1,7 @@
+---
+# This makes use of dynamic inventory and pings all the hosts
+- name: Ping the hosts 
+  hosts: aws_ec2
+  tasks:
+    - name: Ping all the VMs
+      action: ping

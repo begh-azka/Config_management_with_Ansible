@@ -1,0 +1,37 @@
+---
+- name: Apache (httpd) Installation on servers
+  hosts: all
+  tasks: 
+        - name: Install httpd package in RHEL
+          yum: 
+             name: httpd
+             state: present
+          when: ansible_distribution == "RedHat"
+
+        - name: Start and Enable httpd in RHEL 
+          service: 
+             name: httpd 
+             state: started
+             enabled: yes
+          when: ansible_distribution == "RedHat"
+
+        - name: Redirect output and at the same time Display
+          raw: "echo Welcome to RHEL | sudo tee /var/www/html/index.html"
+          when: ansible_distribution == "RedHat"
+
+        - name: Install apache package in Ubuntu
+          apt:
+             name: apache2
+             state: present
+          when: ansible_distribution == "Ubuntu"
+
+        - name: Start and Enable apache in Ubuntu
+          service:
+             name: apache2
+             state: started
+             enabled: yes
+          when: ansible_distribution == "Ubuntu"
+
+        - name: Redirect output and at the same time Display
+          raw: "echo Welcome to Ubuntu | sudo tee /var/www/html/index.html"
+          when: ansible_distribution == "Ubuntu"

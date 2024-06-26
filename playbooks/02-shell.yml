@@ -1,0 +1,33 @@
+---
+- name: Run shell commands on all the hosts 
+  hosts: all
+  tasks:
+    - name: OS of each VM
+      shell: uname
+      register: osname
+    
+    - name: Print the OS
+      debug: msg={{ osname.stdout }}
+    
+    - name: Usernames
+      shell: whoami
+      register: usernm
+    
+    - name: Print the usernames
+      debug:
+        var: usernm.stdout   
+
+    - name: Hostnames
+      shell: hostname
+      register: hostnm
+    
+    - name: Print the hostnames
+      debug:
+        var: hostnm.stdout
+    
+    - name: OS Falvor of each VM
+      shell: cat /etc/os-release | grep PRETTY_NAME
+      register: flavor
+    
+    - name: Print the flavor of OS
+      debug: msg={{ flavor.stdout }}

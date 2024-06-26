@@ -1,0 +1,22 @@
+plugin: aws_ec2
+region: us-east-1
+keyed_groups:
+
+# Pefix is what you want to have in your group name
+
+# This will group the cloud vms by their architecture type and then in the hosts section, we can use this group to run our tasks
+  - prefix: arch
+    key: 'architecture'
+
+# This will group the cloud vms by their tags and then in the hosts section, we can use this group to run our tasks
+  - prefix: tag
+    key: 'tags'
+
+  - prefix: aws_region
+    key: placement.region
+    
+  - prefix: instance_type
+    key: instance_type
+    
+  - key: tags.environment
+    separator: ''

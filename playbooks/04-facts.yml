@@ -1,0 +1,25 @@
+---
+- name: Gtaher Facts
+  hosts: all
+  tasks:
+       - name: Kernel
+         debug: msg={{ ansible_kernel }}
+
+       - name: Print OS Distribution
+         debug: msg={{ ansible_distribution }}
+
+       - name: Print Date 
+         debug: msg={{ ansible_date_time["date"] }} 
+
+       - name: Print RAM
+         debug:
+           var: ansible_memory_mb["real"]["free"] 
+       
+       - name: Print hostname of the VMs
+         debug: var=ansible_hostname 
+
+       - name: Architecture of the VMs
+         debug: var=ansible_architecture
+
+       - name: Print groups 
+         debug: var=inventory_hostname

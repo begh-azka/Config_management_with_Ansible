@@ -1,0 +1,18 @@
+---
+- name: Playing with Variables in Ansible
+  hosts: all
+  vars:
+       name1: "Jane Doe"
+       age1: "25"
+  tasks:
+       - name: Print the variables
+         debug: msg="Name is {{name1}} and age is {{ age1 }}" 
+
+       - name: Print variables from group_vars variable file
+         debug: msg="One group is {{ group1 }} and the other is {{ group2 }}"
+
+- name: Host vars
+  hosts: node-1
+  tasks:
+       - name: Print variables from host_vars variable files
+         debug: msg="Host1={{ host1 }}, Host2={{ host2 }}, Host3={{ host3 }} and Host4={{ host4 }}"         
